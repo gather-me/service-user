@@ -12,12 +12,6 @@ spring:
     baselineOnMigrate: true
     table: flyway_${spring.application.name}_schema_history
 
-gather:
-  server:
-    auth:
-      url: "http://localhost:9000"
-
-
 # Database
 database:
   endpoint: ${DATABASE_ENDPOINT}
