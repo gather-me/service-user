@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: user
+  r2dbc:
+    username: ${database.user}
+    password: ${database.password}
+    url: r2dbc:postgresql://${database.endpoint}/${database.name}?preparedStatementCacheQueries=0
+  flyway:
+    user: ${database.user}
+    password: ${database.password}
+    url: jdbc:postgresql://${database.migration.endpoint}/${database.name}
+    baselineOnMigrate: true
+    table: flyway_${spring.application.name}_schema_history
+
+gather:
+  server:
+    auth:
+      url: "http://localhost:9000"
+
+
+# Database
+database:
+  endpoint: ${DATABASE_ENDPOINT}
+  migration:
+    endpoint: ${DATABASE_MIGRATION_ENDPOINT}
+  name: ${DATABASE_NAME}
+  password: ${DATABASE_PASSWORD}
+  user: ${DATABASE_USER}
+
+email:
+  format:
+    regex: "^[^\\s@]+@([^\\s@.,]+\\.)+[^\\s@.,]{2,}$"
+
+springdoc:
+  swagger-ui:
+    path: /
+
+server:
+  port: 8090
